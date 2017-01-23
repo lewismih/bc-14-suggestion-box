@@ -1,5 +1,6 @@
 # import Flask class from flask module
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, url_for, request
+import requests
 
 # application object is then created
 app = Flask(__name__)
@@ -16,7 +17,7 @@ def login():
 	if request.method == 'POST':
 		if request.form['username'] != 'admin ' or request.form['password'] != 'admin':
 			error = 'Invalid credentials. Please Try again.'
-		else:
+		else: 
 			return redirect(url_for('home'))
 	return render_template('login.html', error = error)
 
